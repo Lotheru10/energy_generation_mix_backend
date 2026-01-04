@@ -20,13 +20,14 @@ public class CarbonIntensityClientTest {
 
     @Test
     void checkApiData(){
-        String to = OffsetDateTime.now(ZoneOffset.UTC).withMinute(0).withSecond(0).withNano(0).toString();
-        String from = OffsetDateTime.now(ZoneOffset.UTC).withMinute(0).withSecond(0).withNano(0).minusHours(2).toString();
+        String from = OffsetDateTime.now(ZoneOffset.UTC).withHour(0).withMinute(0).withSecond(0).withNano(0).toString();
+        String to = OffsetDateTime.now(ZoneOffset.UTC).withHour(0).withMinute(0).withSecond(0).plusDays(3).withNano(0).toString();
 
         GenerationResponseDto responseDto = carbonIntensityClient.getGeneration(from, to);
 
         assertNotNull(responseDto);
         assertNotNull(responseDto.data());
         assertFalse(responseDto.data().isEmpty());
+        System.out.println(responseDto);
     }
 }

@@ -12,7 +12,7 @@ public record GenerationResponseDto(List<IntervalData> data) {
 
     public record GenerationMix(
             String fuel,
-            float perc
+            double perc
     ) {}
 
 }
