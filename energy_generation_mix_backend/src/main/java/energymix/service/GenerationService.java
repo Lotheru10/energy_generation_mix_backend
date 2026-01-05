@@ -4,30 +4,26 @@ import energymix.client.CarbonIntensityClient;
 import energymix.client.dto.GenerationResponseDto;
 import energymix.service.model.DailyMix;
 import energymix.service.model.GenerationInterval;
-import jakarta.annotation.PostConstruct;
+import energymix.utils.DtoMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 
+
 @Service
 public class GenerationService {
 
     private final CarbonIntensityClient client;
+    private final DtoMapper dtoMapper;
     private final static Set<String> CLEAN = Set.of("biomass", "nuclear", "hydro", "wind", "solar");
 
-    public GenerationService(CarbonIntensityClient client) {
+    public GenerationService(CarbonIntensityClient client, DtoMapper dtoMapper) {
         this.client = client;
+        this.dtoMapper = dtoMapper;
     }
 
-    private GenerationInterval toIntervals(GenerationResponseDto.IntervalData data){
-        Map<String, Double> mix = new LinkedHashMap<>();
-        for (GenerationResponseDto.GenerationMix m : data.generationmix()){
-            mix.put(m.fuel(), m.perc());
-        }
-        return new GenerationInterval(data.from(), data.to(), mix);
-    }
 
     public List<DailyMix> computeDailyMixesForNext3Days(){
         //gets raw data for next n days
@@ -38,7 +34,7 @@ public class GenerationService {
         //map to service model
         List<GenerationInterval> intervals = responseDto.data()
                 .stream()
-                .map(this::toIntervals)
+                .map(dtoMapper::toIntervals)
                 .toList();
 
         List<DailyMix> days = new ArrayList<>();
