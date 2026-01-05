@@ -1,6 +1,5 @@
-package energymix.GenerationTest;
+package energymix.generationTest;
 
-import energymix.controller.GenerationController;
 import energymix.service.GenerationService;
 import energymix.service.model.DailyMix;
 import org.junit.jupiter.api.Test;

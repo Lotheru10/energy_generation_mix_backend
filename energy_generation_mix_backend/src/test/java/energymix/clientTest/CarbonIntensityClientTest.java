@@ -1,4 +1,4 @@
-package energymix.ClientTest;
+package energymix.clientTest;
 
 import energymix.client.CarbonIntensityClient;
 import energymix.client.dto.GenerationResponseDto;
