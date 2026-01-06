@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "@CrossOrigin(origins = \"https://energy-mix.onrender.com\")")
 public class GenerationController {
     private final GenerationService service;
 

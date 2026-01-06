@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "@CrossOrigin(origins = \"https://energy-mix.onrender.com\")")
 public class ChargingController {
     private final ChargingService service;
 
