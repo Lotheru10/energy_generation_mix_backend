@@ -2,7 +2,6 @@
 FROM gradle:8.5-jdk17 AS build
 WORKDIR /app
 COPY . .
-RUN gradle build -x test
 
 # ====== RUNTIME STAGE ======
 FROM eclipse-temurin:17-jre
