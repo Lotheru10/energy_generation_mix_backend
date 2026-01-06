@@ -7,13 +7,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ChargingController {
     private final ChargingService service;
 
@@ -31,7 +29,7 @@ public class ChargingController {
     })
     @GetMapping("/charging/{len}")
     public ChargingWindow bestWindow(
-            @Parameter(description = "Length of the charning window") @PathVariable int len) {
+            @Parameter(description = "Length of the charging window") @PathVariable int len) {
         return service.findBestChargingWindow(len);
     }
 }
