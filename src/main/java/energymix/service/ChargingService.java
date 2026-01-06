@@ -29,7 +29,7 @@ public class ChargingService {
 
     public ChargingWindow findBestChargingWindow(int lenght){
         String from = OffsetDateTime.now(ZoneOffset.UTC).withHour(0).withMinute(30).withSecond(0).withNano(0).plusDays(1).toString();
-        String to = OffsetDateTime.now(ZoneOffset.UTC).withHour(0).withMinute(30).withSecond(0).withNano(0).plusDays(3).toString();
+        String to = OffsetDateTime.now(ZoneOffset.UTC).withHour(0).withMinute(0).withSecond(0).withNano(0).plusDays(3).toString();
 
         GenerationResponseDto responseDto = client.getGeneration(from, to);
 

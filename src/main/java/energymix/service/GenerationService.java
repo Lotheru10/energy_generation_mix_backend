@@ -28,7 +28,7 @@ public class GenerationService {
     public List<DailyMix> computeDailyMixesForNext3Days(){
         //gets raw data for next n days
         String from = OffsetDateTime.now(ZoneOffset.UTC).withHour(0).withMinute(30).withSecond(0).withNano(0).toString();
-        String to = OffsetDateTime.now(ZoneOffset.UTC).withHour(0).withMinute(30).withSecond(0).withNano(0).plusDays(3).toString();
+        String to = OffsetDateTime.now(ZoneOffset.UTC).withHour(0).withMinute(0).withSecond(0).withNano(0).plusDays(3).toString();
         GenerationResponseDto responseDto = client.getGeneration(from, to);
 
         //map to service model
